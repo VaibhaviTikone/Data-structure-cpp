@@ -27,6 +27,27 @@ Node* insert_end(Node *head,int x)
     return head;
 }
 
+Node* delete_beg(Node* head)
+{
+    if(!head){cout<<"list is empty";return NULL;}
+    if(!head){free(head); return NULL;}
+    Node* tmp=head;
+    head=head->next;
+    free(tmp);
+    return head;
+}
+
+Node* delete_end(Node* head)
+{
+    if(!head){cout<<"list is empty";return NULL;}
+    if(!head){free(head); return NULL;}
+    Node* tmp=head,*prev=NULL;
+    while(tmp->next){ prev=tmp;tmp=tmp->next;}
+    prev->next=NULL;
+    free(tmp);
+    return head;
+}
+
 void print(Node *head)
 {
     if(!head) {cout<<"List is empty.\n";return;}
@@ -49,6 +70,10 @@ int main()
     print(head);
     head=insert_end(head,50);
     head=insert_end(head,63);
+    print(head);
+    head=delete_beg(head);
+    print(head);
+    head=delete_end(head);
     print(head);
     return 0;
 }
